@@ -1,19 +1,19 @@
 *Find Record:
-
+-Ryan
 *Add Record:
-
+-Sam
 *Update Record:
-
+-Daniel
 *Remove Record:
-
+-Michael
 *Quit:
-
+-Michael
 Interface:
-
+-Daniel
 Sort:
-
+-Sam
 Sanitize:
-
+-Ryan
 Testing:
-
+-Sam
 
