@@ -1,0 +1,19 @@
+*Find Record:
+
+*Add Record:
+
+*Update Record:
+
+*Remove Record:
+
+*Quit:
+
+Interface:
+
+Sort:
+
+Sanitize:
+
+Testing:
+
+

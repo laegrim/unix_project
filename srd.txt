@@ -1,0 +1,2 @@
+- seperator for fields in database is ':'
+
