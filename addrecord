@@ -1,6 +1,6 @@
 #!/bin/bash
 
-prompt="Enter a new record
+prompt="Enter a new record (record must have 4 params)
 	>:"
 
 #read input

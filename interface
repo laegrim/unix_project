@@ -15,5 +15,8 @@ while true; do
 	case "${input}" in
 		"a"|"A") 	./addrecord;;
 		*) 		exit 0;;
+
+		"b"|"B")	./findrecord;;
+		*)		exit 0;;
 	esac
 done
