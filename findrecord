@@ -9,3 +9,5 @@ read -p "${prompt}" file
 set ${file}
 
 echo "You want to search for $file?"
+
+exit 0
