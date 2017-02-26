@@ -13,10 +13,12 @@ while true; do
 
 	read -p "${prompt}" input
 	case "${input}" in
-		"a"|"A") 	./addrecord;;
-		*) 		exit 0;;
-
-		"b"|"B")	./findrecord;;
-		*)		exit 0;;
+		a|A) ./findrecord;;
+		b|B) ./addrecord;;
+#		c|C) ./updaterecord;;
+#		d|D) ./removerecord;;
+#		h|h) ./help;;
+		e|E) echo "Quitting..."; sleep 2s; exit 0;;
+		*) exit 0;;
 	esac
 done
