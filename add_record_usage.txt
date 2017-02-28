@@ -1,1 +1,8 @@
-this is how it's used:
+usage: addrecord [-h --help help]
+
+Records are always ':' delimited, and are formatted 
+Name:Address:Email:Phone. The ':' character cannot 
+be used in a field.
+
+Special characters are always escaped.
+

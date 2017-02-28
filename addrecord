@@ -25,10 +25,11 @@ prompt_loop () {
 	}
 
 #Check to see if help requested
-if [ ${1} = '-h' -o ${1} = '--help' -o ${1} = 'help' ]; then
+if [ "${1}" = '-h' -o "${1}" = '--help' -o "${1}" = 'help' ]; then
 	cat "add_record_usage.txt"
 	prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"
 	exit 0
+fi
 
 #Read input
 read -p "${prompt}" record
