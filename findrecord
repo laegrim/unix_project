@@ -2,12 +2,24 @@
 
 #find record based on user input
 
-prompt="file to look for: "
+prompt="Search for a record by:
+	(a) name
+	(b) address
+	(c) phone
+	(d) email  "
 
-read -p "${prompt}" file
 
-set ${file}
+    read -p "${prompt}" input
+    
+    case $input in
+        a|A) searchParam="name";;
+        b|B) searchParam="address";;
+        c|C) searchParam="phone number";;
+        d|D) searchParam="email";;
+        *) exit 0;;
+    esac
+verification="You want to search records by $searchParam?"
 
-echo "You want to search for $file?"
+read -p "${verifyPrompt}" verification
 
-exit 0
+#exit 0
