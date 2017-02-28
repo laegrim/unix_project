@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+prompt="Please select from the following options:
+	(a) Find a record
+	(b) Add a new record
+	(c) Update a record
+	(d) Remove a record
+	(h) Help
+	(e) Quit
+	>:" 
+while true; do
+
+	read -p "${prompt}" input
+	case "${input}" in
+		a|A) ./findrecord;;
+		b|B) ./addrecord;;
+#		c|C) ./updaterecord;;
+#		d|D) ./removerecord;;
+#		h|h) ./help;;
+		e|E) echo "Quitting..."; sleep 2s; exit 0;;
+		*) exit 0;;
+	esac
+done

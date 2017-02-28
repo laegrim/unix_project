@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#find record based on user input
+
+prompt="file to look for: "
+
+read -p "${prompt}" file
+
+set ${file}
+
+echo "You want to search for $file?"
+
+exit 0

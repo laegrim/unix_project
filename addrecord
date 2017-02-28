@@ -1,0 +1,21 @@
+#!/bin/bash
+
+prompt="Enter a new record
+	>:"
+
+#read input
+read -p "${prompt}" record
+#sanitize input
+
+set ${record}
+#Check input to see if it is valid
+if [ ${#} -ne 4 ]; then
+       	echo "Illegal number of parameters"
+	cat "add_record_usage.txt"
+ 	exit 1
+fi
+#Append the input to the file
+printf "%s:%s:%s:%s\n" ${1} ${2} ${3} ${4} >> database.txt
+#Sort the file
+#exit
+exit 0

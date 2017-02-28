@@ -1,0 +1,10 @@
+test:::
+test1:test2:test3:test4
+tetst:stest:tsests:tstas
+This:is:a:record
+This:is:a:record2
+Hey,:what:a:record
+
+the:cat:is:small
+the:cat:is:brown
+the:cat:is:fat
