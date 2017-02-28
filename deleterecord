@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#determine the search parameter
+
+#commit 1
+
+cat 'database.txt'
+
+#check for database
+if [ -e 'database.txt' ]; then
+   #check for existence of string 
+   if grep -q $1 database.txt; then
+      #search for and remove only the exact occurrence  
+      grep -v -w "$1"  database.txt > datatemp.txt;
+      mv datatemp.txt database.txt
+   else
+       echo "Record not found."
+   fi
+else
+    echo "There is no database."
+fi
+
+cat 'database.txt'
+
