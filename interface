@@ -2,23 +2,26 @@
 
 
 prompt="Please select from the following options:
-	(a) Find a record
-	(b) Add a new record
-	(c) Update a record
-	(d) Remove a record
-	(h) Help
-	(e) Quit
-	>:" 
+		(a) Find a record
+		(b) Add a new record
+		(c) Update a record
+		(d) Remove a record
+		(e) Diplay records
+		(h) Help
+		(x) Quit
+		>:"
 while true; do
 
 	read -p "${prompt}" input
 	case "${input}" in
+
 		a|A) ./findrecord;;
 		b|B) ./addrecord;;
-#		c|C) ./updaterecord;;
-#		d|D) ./removerecord;;
-#		h|h) ./help;;
-		e|E) echo "Quitting..."; sleep 2s; exit 0;;
-		*) exit 0;;
+		c|C) ./updaterecord;;
+		d|D) ./deleterecord;;
+		e|E) ./displayrecords;;
+#		h|H) ./help;;
+		x|X) echo "Quitting..."; sleep 2s; exit 0;;
+		*) echo "Incorrect input."; sleep 2s;
 	esac
-done
+done 
