@@ -2,24 +2,44 @@
 
 #find record based on user input
 
+function name_find() {
+	read -e -p "Enter the name of contact to find: " name
+	grep -w "^${name}" database.txt
+}
+
+function address_find() {
+	read -e -p "Enter the address of contact to find: " address
+	grep "^\([^:]*:\)\{1\}${address}:" database.txt
+}
+
+function phone_find() {
+	read -e -p "Enter the phone number of contact to find: " phone
+	grep "^\([^:]*:\)\{2\}${phone}:" database.txt
+}
+
+function email_find() {
+	read -e -p "Enter the email of contact to find: " email
+	grep "^\([^:]*:\)\{3\}${email}" database.txt
+}
+
+
 prompt="Search for a record by:
 	(a) name
 	(b) address
 	(c) phone
-	(d) email  "
+	(d) email  
+	(x) exit
+	>:"
 
+while true; do
 
-    read -p "${prompt}" input
-    
+    read -p "${prompt}" input    
     case $input in
-        a|A) searchParam="name";;
-        b|B) searchParam="address";;
-        c|C) searchParam="phone number";;
-        d|D) searchParam="email";;
-        *) exit 0;;
+
+        a|A) name_find;;
+        b|B) address_find;;
+        c|C) phone_find;;
+        d|D) email_find;;
+        x|X) exit 0;;
     esac
-verification="You want to search records by $searchParam?"
-
-read -p "${verifyPrompt}" verification
-
-#exit 0
+done
