@@ -51,13 +51,13 @@ if [ ${#} -ne 4 ]; then
 fi
 
 #Check to see if name is a duplicate of another field
-match_name=$(grep -n -F ${1} database.txt)
+match_name=$(grep -n -F "${1}" database.txt)
 #Check to see if address is a duplicate of another field
-match_address=$(grep -n -F ${2} database.txt)
+match_address=$(grep -n -F "${2}" database.txt)
 #Check to see if phone number is a duplicate of another field
-match_email=$(grep -n -F ${3} database.txt)
+match_email=$(grep -n -F "${3}" database.txt)
 #Check to see if email is a duplicate of another field
-match_phone=$(grep -n -F ${4} database.txt)
+match_phone=$(grep -n -F "${4}" database.txt)
 
 match=false
 
@@ -87,13 +87,13 @@ if [ ${match} = true ]; then
 			printf "%s:%s:%s:%s\n" ${1} ${2} ${3} ${4} >> database.txt;;
 		n|N)	#check if they want to add a new record, exit if not
 			prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}";;
-		*)	prompt_loop "${improper_dup_field_prompt}" 'printf "%s:%s:%s:%s\n" ${1} ${2} ${3} ${4} >> database.txt', \
+		*)	prompt_loop "${improper_dup_field_prompt}" 'printf "%s:%s:%s:%s\n" "${1}" "${2}" "${3}" "${4}" >> database.txt', \
 					"${improper_dup_field_prompt}";;
 	esac
 	
 else
 	#Append the input to the file
-	printf "%s:%s:%s:%s\n" ${1} ${2} ${3} ${4} >> database.txt
+	printf "%s:%s:%s:%s\n" "${1}" "${2}" "${3}" "${4}" >> database.txt
 	#exit
 	exit 0
 fi
