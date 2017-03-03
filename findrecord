@@ -4,22 +4,50 @@
 
 function name_find() {
 	read -e -p "Enter the name of contact to find: " name
-	grep -w "^${name}" database.txt
+	matchname=$(grep -w "^${name}" database.txt)
+	if [ -n "${matchname}" ]; then
+		echo "Record match with name "${name}" found: "
+		grep -w "^${name}" database.txt
+	
+	else
+		echo "No record with name "${name}" found."
+	fi
 }
 
 function address_find() {
 	read -e -p "Enter the address of contact to find: " address
-	grep "^\([^:]*:\)\{1\}${address}:" database.txt
+	matchaddress=$(grep "^\([^:]*:\)\{1\}${address}:" database.txt)
+	if [ -n "${matchaddress}" ]; then
+		echo "Record match with address "${address}" found: "
+		grep "^\([^:]*:\)\{1\}${address}:" database.txt
+
+	else
+		echo "No record with address "${address}" found."
+	fi
 }
 
 function phone_find() {
 	read -e -p "Enter the phone number of contact to find: " phone
-	grep "^\([^:]*:\)\{2\}${phone}:" database.txt
+	matchphone=$(grep "^\([^:]*:\)\{2\}${phone}:" database.txt)
+	if [ -n "${matchphone}" ]; then
+		echo "Record match with phone number "${phone}" found: "
+		grep "^\([^:]*:\)\{2\}${phone}:" database.txt
+	
+	else
+		echo "No record with phone number "${phone}" found."
+	fi
 }
 
 function email_find() {
 	read -e -p "Enter the email of contact to find: " email
-	grep "^\([^:]*:\)\{3\}${email}" database.txt
+	matchemail=$(grep "^\([^:]*:\)\{3\}${email}" database.txt)
+	if [ -n "${matchemail}" ]; then
+		echo "Record match with email "${email}" found: "
+		grep "^\([^:]*:\)\{3\}${email}" database.txt
+	
+	else
+		echo "No record with email "${email}" found."
+	fi
 }
 
 

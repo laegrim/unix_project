@@ -10,14 +10,26 @@ promptnew=":
 	   >: "
 
 	
-	while read line; do
-	echo "$line"
-	done < database.txt
+while read line; do
+echo "$line"
+done < database.txt
 
-	read -p "${prompt}" input        
+read -p "${prompt}" input        
 	
-	read -p "${promptnew}" newinput
-	
-	sed  -i -e "s/${input}/${newinput}/g" database.txt
+read -p "${promptnew}" newinput
+
+IFS=':'
+set ${newinput}
+unset IFS
+
+if [ ${#} -ne 4 ]; then
+       	echo "Illegal number of parameters"
+ 	exit 0
+fi
+
+sed  -i -e "s/${input}/${newinput}/g" database.txt
+echo "Record replaced"
+
+
 
 exit 0

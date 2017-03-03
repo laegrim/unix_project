@@ -1,0 +1,9 @@
+#!/bin/bash
+#create database
+
+file="./database.txt"
+
+if [ ! -f "${file}"]; then
+	printf "File database.txt doesn't exit"
+	printf "Name:Address:Phone:Email" >> database.txt
+fi
