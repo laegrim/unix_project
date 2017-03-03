@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Find Record to Update: "
+./findrecord
+
+pat=$(cat found.txt)
+
+./deleterecord $pat
+
+echo "Update Record: "
+./createrecord
+
+pat=$(cat pat.txt)
+./addrecords $pat
+
+echo "Record Updated"
+

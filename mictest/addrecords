@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -ne 0 ]; then
+    pat=$1
+else
+    ./createrecord
+    pat=$(cat pat.txt)
+fi
+
+if grep -q "$pat" database.txt; then 
+    #./prompt error duplicate
+    echo 'Duplicate Record.'
+else
+   echo "$pat" >> database.txt
+fi
+

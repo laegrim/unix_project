@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -ne 0 ]; then
+    pat=$1
+else
+    ./findrecord
+    pat=$(cat found.txt)
+fi
+
+
+if grep -q "$pat" database.txt; then  
+    grep -v -w "$pat"  database.txt > datatemp.txt;
+    mv datatemp.txt database.txt
+fi
+
