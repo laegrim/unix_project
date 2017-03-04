@@ -1,6 +1,15 @@
 #!/bin/bash
 source ./createdatabase
 
+help_prompt="usage: addrecord [-h --help help]
+
+Records are always ':' delimited, and are formatted
+Name:Address:Email:Phone. The ':' character cannot
+be used in a field.
+
+Special characters are always escaped.
+"
+
 prompt_name="Enter a name for the new record
 	>:"
 prompt_address="Enter an address for the new record
@@ -30,12 +39,13 @@ prompt_loop () {
 			esac
 		done
 	}
+
 #Create database if not already present
 createdatabase
 
 #Check to see if help requested
 if [ "${1}" = '-h' -o "${1}" = '--help' -o "${1}" = 'help' ]; then
-	cat "add_record_usage.txt"
+	echo "${help_prompt}"
 	prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"
 	exit 0
 fi
@@ -43,21 +53,22 @@ fi
 #Read input
 read -p "${prompt_name}" record[0]
 read -p "${prompt_address}" record[1]
-read -p "${prompt_email}" record[2]
-read -p "${prompt_phone}" record[3]
+read -p "${prompt_phone}" record[2]
+read -p "${prompt_email}" record[3]
 
 #Sanitizing output is done by -F flag for grep
-
-#Separate Input
-#IFS=':'
-#set ${record} 
-#unset IFS
 
 #Check input to see if it is valid
 if [ ${#record[@]} -ne 4 ]; then
        	echo "Illegal number of parameters"
-	cat "add_record_usage.txt"
+	echo "${help_prompt}"
 	#check if they want to add a new record, exit if not
+	prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"
+ 	exit 0
+fi
+if printf '\n%s\t' "${record[*]}" | grep ":"; then
+	echo "Illegal character : in input"
+	echo "${help_prompt}"
 	prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"
  	exit 0
 fi
