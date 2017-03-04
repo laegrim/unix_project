@@ -1,7 +1,13 @@
 #!/bin/bash
 source ./createdatabase
 
-prompt="Enter a new record
+prompt_name="Enter a name for the new record
+	>:"
+prompt_address="Enter an address for the new record
+	>:"
+prompt_email="Enter an email for the new record
+	>:"
+prompt_phone="Enter a phone number for the new record
 	>:"
 dup_field_prompt="Are you sure you want to submit this record (y/n)?
 	>:"
@@ -35,17 +41,20 @@ if [ "${1}" = '-h' -o "${1}" = '--help' -o "${1}" = 'help' ]; then
 fi
 
 #Read input
-read -p "${prompt}" record
+read -p "${prompt_name}" record[0]
+read -p "${prompt_address}" record[1]
+read -p "${prompt_email}" record[2]
+read -p "${prompt_phone}" record[3]
 
 #Sanitizing output is done by -F flag for grep
 
 #Separate Input
-IFS=':'
-set ${record}
-unset IFS
+#IFS=':'
+#set ${record} 
+#unset IFS
 
 #Check input to see if it is valid
-if [ ${#} -ne 4 ]; then
+if [ ${#record[@]} -ne 4 ]; then
        	echo "Illegal number of parameters"
 	cat "add_record_usage.txt"
 	#check if they want to add a new record, exit if not
@@ -54,31 +63,31 @@ if [ ${#} -ne 4 ]; then
 fi
 
 #Check to see if name is a duplicate of another field
-match_name=$(grep -n -F "${1}" database.txt)
+match_name=$(grep -n -F "${record[0]}" database.txt)
 #Check to see if address is a duplicate of another field
-match_address=$(grep -n -F "${2}" database.txt)
+match_address=$(grep -n -F "${record[1]}" database.txt)
 #Check to see if phone number is a duplicate of another field
-match_email=$(grep -n -F "${3}" database.txt)
+match_email=$(grep -n -F "${record[2]}" database.txt)
 #Check to see if email is a duplicate of another field
-match_phone=$(grep -n -F "${4}" database.txt)
+match_phone=$(grep -n -F "${record[3]}" database.txt)
 
 match=false
 
 #Handle field matches
 if [ -n "${match_name}" ]; then
-	printf "Entries in the database have fields matching the given name: %s\n%s\n\n" "${1}" "${match_name}"
+	printf "Entries in the database have fields matching the given name: %s\n%s\n\n" "${record[0]}" "${match_name}"
 	match=true
 fi
 if [ -n "${match_address}" ]; then
-	printf "Entries in the database have fields matching the given address: %s\n%s\n\n" "${2}" "${match_address}"
+	printf "Entries in the database have fields matching the given address: %s\n%s\n\n" "${record[1]}" "${match_address}"
 	match=true
 fi
 if [ -n "${match_email}" ]; then
-	printf "Entries in the database have fields matching the given email: %s\n%s\n\n" "${3}" "${match_email}"
+	printf "Entries in the database have fields matching the given email: %s\n%s\n\n" "${record[2]}" "${match_email}"
 	match=true
 fi
 if [ -n "${match_phone}" ]; then
-	printf "Entries in the databse have fields matching the given phone number: %s\n%s\n\n" "${4}" "${match_phone}"
+	printf "Entries in the databse have fields matching the given phone number: %s\n%s\n\n" "${record[3]}" "${match_phone}"
 	match=true
 fi
 
@@ -87,16 +96,16 @@ if [ ${match} = true ]; then
 	read -p "${dup_field_prompt}" valid
         case ${valid} in 
 		y|Y) 	#append input to the file
-			printf "%s:%s:%s:%s\n" "${1}" "${2}" "${3}" "${4}" >> database.txt;;
+			printf "%s:%s:%s:%s\n" "${record[0]}" "${record[1]}" "${record[2]}" "${record[3]}" >> database.txt;;
 		n|N)	#check if they want to add a new record, exit if not
 			prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}";;
-		*)	prompt_loop "${improper_dup_field_prompt}" 'printf "%s:%s:%s:%s\n" "${1}" "${2}" "${3}" "${4}" >> database.txt', \
+		*)	prompt_loop "${improper_dup_field_prompt}" 'printf "%s:%s:%s:%s\n" "${record[0]}" "${record[1]}" "${record[2]}" "${record[3]}" >> database.txt', \
 					"${improper_dup_field_prompt}";;
 	esac
 	
 else
 	#Append the input to the file
-	printf "%s:%s:%s:%s\n" "${1}" "${2}" "${3}" "${4}" >> database.txt
+	printf "%s:%s:%s:%s\n" "${record[0]}" "${record[1]}" "${record[2]}" "${record[3]}" >> database.txt
 	#exit
 	exit 0
 fi
