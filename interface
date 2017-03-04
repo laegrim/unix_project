@@ -1,5 +1,8 @@
 #!/bin/bash
 
+clear
+
+printf "Welcome to your address book!\n\n"
 
 prompt="Please select from the following options:
 		(a) Find a record
@@ -21,7 +24,7 @@ while true; do
 		d|D) ./deleterecord;;
 		e|E) ./displayrecords;;
 #		h|H) ./help;;
-		x|X) echo "Quitting..."; sleep 2s; exit 0;;
-		*) echo "Incorrect input."; sleep 2s;
+		x|X) echo "Quitting..."; sleep 1s; exit 0;;
+		*) echo "Incorrect input."; sleep 1s; clear;
 	esac
 done 
