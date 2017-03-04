@@ -1,16 +1,3 @@
-test:::
-test1:test2:test3:test4
-tetst:stest:tsests:tstas
-This:is:a:record
-This:is:a:record2
-Hey,:what:a:record
-
-the:cat:is:small
-the:cat:is:brown
-the:cat:is:fat
-Samuel Teich: This is my Address: This is my Email: This is my Phone
-Sam:Addr:Email:Phone
-James:Enterprise:jamestkirk@enterprise.com:1257111317192129
-a:b:c:d
-2
-Clark Kent:500 W. Totally Not a Secret Lair Dr.:superman@jleague.org:18004328752
+Name:Address:Phone:Email
+Jean Luke Picard:Enterprise, Main Bridge:jlpicard@enterprise.com:1-800-Deep-Space
+Funny Stuff!:grep -n stuff /bin/bash:echo "this is a string":exit 0
