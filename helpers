@@ -40,3 +40,19 @@ input_record() {
 	fi
 }
 
+display_records() {
+	clear
+	printf "Records in Database: \n\n"
+	printf "Name  |  Address  |  Email  |  Phone\n"
+	echo "------------------------------------"
+	count=1
+
+	while read line; do
+			printf "($count) "
+				echo $line | tr ":" "|"
+
+					let count=$count+1
+				done < database.txt
+				printf "\n\n"
+				return 0
+}
