@@ -1,7 +1,9 @@
 #!/bin/bash
-
 #find record based on user input
+source ./helpers
 clear
+display_records
+
 function name_find() {
 	read -e -p "Enter the name of contact to find: " name
 	matchname=$(grep -w "^${name}" database.txt)
