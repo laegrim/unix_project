@@ -3,33 +3,49 @@
 
 ./displayrecords
 
+source ./helpers
 
-prompt="Which record whould you like to replace
+IFS=$'\n' read -d '' -r -a lines < database.txt
+#printf "(1) %s\n" "${lines[0]}"
+#printf "(2) %s\n" "${lines[1]}"
+
+
+prompt="Which record line whould you like to replace?
 	>: "
 
+updateConfirm="You want to update this record?"
 promptnew="What is the new record?
 	   >: "
 
-	
-#while read line; do
-#echo "$line"
-#done < database.txt
-
+#input is the user's line selection
 read -p "${prompt}" input        
+
+#printf "You want to update line ${input}?\n"
+read -p "${updateConfirm}" confirmation
+printf "${lines[$input]}\n"
 	
-read -p "${promptnew}" newinput
-
-IFS=':'
-set ${newinput}
-unset IFS
-
-if [ ${#} -ne 4 ]; then
-       	echo "Illegal number of parameters"
- 	exit 0
+if [ $confirmation == "Y" || $confirmation =="y"]; then
+	input_record     #calls input_record function from ./helpers
+else
+	#ask user again for line selection
 fi
 
-sed  -i -e "s/${input}/${newinput}/g" database.txt
-echo "Record replaced"
+#IFS=':'i
+set ${input}
+#unset IFS
+
+#if [ ${#} -ne 4 ]; then
+#       	echo "Illegal number of parameters"
+# 	exit 0
+#fi
+
+
+
+
+
+
+#sed  -i -e "s/${input}/${newinput}/g" database.txt
+#echo "Record replaced"
 
 
 
