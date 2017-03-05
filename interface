@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source ./helpers
 clear
 
 printf "Welcome to your address book!\n\n"
@@ -22,7 +22,7 @@ while true; do
 		b|B) ./addrecord;;
 		c|C) ./updaterecord;;
 		d|D) ./deleterecord;;
-		e|E) ./displayrecords;;
+		e|E) display_records;;
 #		h|H) ./help;;
 		x|X) echo "Quitting..."; sleep 1s; exit 0;;
 		*) echo "Incorrect input."; sleep 1s; clear;

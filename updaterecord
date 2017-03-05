@@ -1,10 +1,15 @@
 #!/bin/bash
 #update record
 
+<<<<<<< HEAD
 # will probably have to change this to a function call
 ./displayrecords
 
+=======
+>>>>>>> 3134ca31bff04efbc31ed3ad332f972234b1660d
 source ./helpers
+
+display_records
 
 # reads in each line of database.txt to an index in the array, 'lines'
 IFS=$'\n' read -d '' -r -a lines < database.txt

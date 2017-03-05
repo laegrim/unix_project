@@ -32,11 +32,27 @@ input_record() {
 	#Check input to see if it is valid
 	if [ ${#record[@]} -ne 4 ]; then
 		echo "Illegal number of parameters"
-		exit 0
+		return 1
 	fi
 	if printf '\n%s\t' "${record[*]}" | grep ":"; then
 		echo "Illegal character : in input"
-		exit 0
+		return 1
 	fi
 }
 
+display_records() {
+	clear
+	printf "Records in Database: \n\n"
+	printf "Name  |  Address  |  Email  |  Phone\n"
+	echo "------------------------------------"
+	count=1
+
+	while read line; do
+			printf "($count) "
+				echo $line | tr ":" "|"
+
+					let count=$count+1
+				done < database.txt
+				printf "\n\n"
+				return 0
+}

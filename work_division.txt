@@ -10,10 +10,4 @@
 -Michael
 Interface:
 -Daniel
-Sort:
--Sam
-Sanitize:
--Ryan
-Testing:
--Sam
 

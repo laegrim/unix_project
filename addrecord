@@ -42,21 +42,9 @@ if [ "${1}" = '-h' -o "${1}" = '--help' -o "${1}" = 'help' ]; then
 fi
 
 #get input
-input_record
-
-#Check input to see if it is valid
-if [ ${#record[@]} -ne 4 ]; then
-       	echo "Illegal number of parameters"
-	echo "${help_prompt}"
-	#check if they want to add a new record, exit if not
-	prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"	
- 	exit 0
-fi
-if printf '\n%s\t' "${record[*]}" | grep ":"; then
-	echo "Illegal character : in input"
+if ! input_record; then
 	echo "${help_prompt}"
 	prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"
- 	exit 0
 fi
 
 #Check to see if name is a duplicate of another field
