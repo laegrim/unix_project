@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./createdatabase
+source ./helpers
 
 help_prompt="usage: addrecord [-h --help help]
 
@@ -9,15 +9,6 @@ be used in a field.
 
 Special characters are always escaped.
 "
-
-prompt_name="Enter a name for the new record
-	>:"
-prompt_address="Enter an address for the new record
-	>:"
-prompt_email="Enter an email for the new record
-	>:"
-prompt_phone="Enter a phone number for the new record
-	>:"
 dup_field_prompt="Are you sure you want to submit this record (y/n)?
 	>:"
 improper_dup_field_prompt="Please enter 'y' to submit this record, 'n' to exit
@@ -50,13 +41,8 @@ if [ "${1}" = '-h' -o "${1}" = '--help' -o "${1}" = 'help' ]; then
 	exit 0
 fi
 
-#Read input
-read -p "${prompt_name}" record[0]
-read -p "${prompt_address}" record[1]
-read -p "${prompt_phone}" record[2]
-read -p "${prompt_email}" record[3]
-
-#Sanitizing output is done by -F flag for grep
+#get input
+input_record
 
 #Check input to see if it is valid
 if [ ${#record[@]} -ne 4 ]; then
