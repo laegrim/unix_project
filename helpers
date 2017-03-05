@@ -1,0 +1,43 @@
+#!/bin/bash
+#create database
+
+createdatabase() {
+	file="./database.txt"
+
+	if [ ! -f "${file}" ]; then
+		printf "File database.txt doesn't exit\n"
+		printf "Name:Address:Phone:Email\n" >> database.txt
+	fi
+}
+
+
+input_record() {
+
+	prompt_name="Enter a name for the new record
+	        >:"
+	prompt_address="Enter an address for the new record
+		>:"
+	prompt_email="Enter an email for the new record
+	        >:"
+	prompt_phone="Enter a phone number for the new record
+		>:"
+
+	#Read input
+	read -p "${prompt_name}" record[0]
+	read -p "${prompt_address}" record[1]
+	read -p "${prompt_phone}" record[2]
+	read -p "${prompt_email}" record[3]
+
+	#Check input to see if it is valid
+	if [ ${#record[@]} -ne 4 ]; then
+		echo "Illegal number of parameters"
+		exit 0
+	fi
+	if printf '\n%s\t' "${record[*]}" | grep ":"; then
+		echo "Illegal character : in input"
+		exit 0
+	fi
+
+	return ${record}
+}
+
