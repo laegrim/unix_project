@@ -1,13 +1,10 @@
 #!/bin/bash
 #update record
 
-<<<<<<< HEAD
 # will probably have to change this to a function call
 ./displayrecords
 
-=======
->>>>>>> 0febe9a12c34a57779a7b5124be733d9e289be9d
-source ./helpers
+./helpers
 
 display_records
 
