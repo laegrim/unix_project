@@ -1,6 +1,7 @@
 #!/bin/bash
 #update record
 
+# will probably have to change this to a function call
 ./displayrecords
 
 source ./helpers
@@ -18,22 +19,13 @@ promptnew="What is the new record?
 read -p "${prompt}" input        
 
 read -p "${updateConfirm}: ${lines[$input]}: " confirmation
-#printf "${lines[$input]}\n"
 
 case $confirmation in
-	y|Y) echo "FILE UPDATED" ;;
+	y|Y) input_record 
+	     newRecord="${record[0]}:${record[1]}:${record[2]}:${record[3]}"  # "${lines[$input]}"
+	     printf "${newRecord}\n" ;;
 	n|N) echo "FILE NOT UPDATED" ;;
 	*) echo "don't know" ;;
 esac
- #input_record     #calls input_record function from ./helpers
-
-
-#if [ ${#} -ne 4 ]; then
-#       	echo "Illegal number of parameters"
-# 	exit 0
-#fi
-
-
-
 
 exit 0
