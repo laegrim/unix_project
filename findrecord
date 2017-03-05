@@ -75,5 +75,6 @@ while true; do
         c|C) phone_find;;
         d|D) email_find;;
         x|X) exit 0;;
+	*) echo "Incorrect input."; sleep 1s; clear;
     esac
 done
