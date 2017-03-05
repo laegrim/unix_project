@@ -1,9 +1,12 @@
 #!/bin/bash
 #update record
 
+<<<<<<< HEAD
 # will probably have to change this to a function call
 ./displayrecords
 
+=======
+>>>>>>> 0febe9a12c34a57779a7b5124be733d9e289be9d
 source ./helpers
 
 display_records
@@ -30,7 +33,7 @@ case $confirmation in
 	     printf '%s\n' "${lines[*]}" >| database.txt;;
 	     
 	n|N) echo "FILE NOT UPDATED" ;;
-	*) echo "don't know" ;;
+	*) echo "invalid input" exit 0 ;;
 esac
 
 exit 0
