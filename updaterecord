@@ -1,12 +1,6 @@
 #!/bin/bash
 #update record
 
-<<<<<<< HEAD
-# will probably have to change this to a function call
-./displayrecords
-
-=======
->>>>>>> 3134ca31bff04efbc31ed3ad332f972234b1660d
 source ./helpers
 
 display_records
@@ -30,7 +24,7 @@ case $confirmation in
 	     newRecord="${record[0]}:${record[1]}:${record[2]}:${record[3]}"  # "${lines[$input]}"
 	     printf "${newRecord}\n" ;;
 	n|N) echo "FILE NOT UPDATED" ;;
-	*) echo "don't know" ;;
+	*) echo "invalid input" exit 0 ;;
 esac
 
 exit 0
