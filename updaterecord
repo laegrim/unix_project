@@ -1,10 +1,9 @@
 #!/bin/bash
 #update record
 
-# will probably have to change this to a function call
-./displayrecords
-
 source ./helpers
+./helpers
+
 
 display_records
 
