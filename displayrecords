@@ -11,5 +11,5 @@ while read line; do
 
 	let count=$count+1
 done < database.txt
-
+printf "\n\n"
 exit 0

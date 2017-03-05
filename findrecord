@@ -1,11 +1,12 @@
 #!/bin/bash
 
 #find record based on user input
-
+clear
 function name_find() {
 	read -e -p "Enter the name of contact to find: " name
 	matchname=$(grep -w "^${name}" database.txt)
 	if [ -n "${matchname}" ]; then
+		clear
 		echo "Record match with name "${name}" found: "
 		grep -w "^${name}" database.txt
 	
@@ -18,6 +19,7 @@ function address_find() {
 	read -e -p "Enter the address of contact to find: " address
 	matchaddress=$(grep "^\([^:]*:\)\{1\}${address}:" database.txt)
 	if [ -n "${matchaddress}" ]; then
+		clear
 		echo "Record match with address "${address}" found: "
 		grep "^\([^:]*:\)\{1\}${address}:" database.txt
 
@@ -30,6 +32,7 @@ function phone_find() {
 	read -e -p "Enter the phone number of contact to find: " phone
 	matchphone=$(grep "^\([^:]*:\)\{2\}${phone}:" database.txt)
 	if [ -n "${matchphone}" ]; then
+		clear
 		echo "Record match with phone number "${phone}" found: "
 		grep "^\([^:]*:\)\{2\}${phone}:" database.txt
 	
@@ -42,7 +45,8 @@ function email_find() {
 	read -e -p "Enter the email of contact to find: " email
 	matchemail=$(grep "^\([^:]*:\)\{3\}${email}" database.txt)
 	if [ -n "${matchemail}" ]; then
-		echo "Record match with email "${email}" found: "
+		clear
+		echo "Record match with email "${email}" found:"
 		grep "^\([^:]*:\)\{3\}${email}" database.txt
 	
 	else

@@ -1,18 +1,19 @@
 #!/bin/bash
 #update record
 
-prompt=":
-	Which record whould you like to replace
+./displayrecords
+
+
+prompt="Which record whould you like to replace
 	>: "
 
-promptnew=":
-	   What is the new record?
+promptnew="What is the new record?
 	   >: "
 
 	
-while read line; do
-echo "$line"
-done < database.txt
+#while read line; do
+#echo "$line"
+#done < database.txt
 
 read -p "${prompt}" input        
 	
