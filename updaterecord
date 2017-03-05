@@ -10,7 +10,7 @@ IFS=$'\n' read -d '' -r -a lines < database.txt
 
 prompt="Which record line whould you like to replace?
 	>: "
-updateConfirm="You want to update this record?"
+updateConfirm="You want to update this record? (y/n)"
 promptnew="What is the new record?
 	   >: "
 

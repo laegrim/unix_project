@@ -10,7 +10,6 @@ prompt="Please select from the following options:
 		(c) Update a record
 		(d) Remove a record
 		(e) Diplay records
-		(h) Help
 		(x) Quit
 		>:"
 while true; do
@@ -23,7 +22,6 @@ while true; do
 		c|C) ./updaterecord;;
 		d|D) ./deleterecord;;
 		e|E) display_records;;
-#		h|H) ./help;;
 		x|X) echo "Quitting..."; sleep 1s; exit 0;;
 		*) echo "Incorrect input."; sleep 1s; clear;
 	esac

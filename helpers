@@ -43,9 +43,9 @@ input_record() {
 display_records() {
 	clear
 	printf "Records in Database: \n\n"
-	printf "Name  |  Address  |  Email  |  Phone\n"
+	printf "Name  |  Address  |  Phone  |  Email\n"
 	echo "------------------------------------"
-	count=1
+	count=0
 
 	while read line; do
 			printf "($count) "
