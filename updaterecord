@@ -2,8 +2,6 @@
 #update record
 
 source ./helpers
-./helpers
-
 
 display_records
 
