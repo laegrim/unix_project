@@ -5,14 +5,11 @@
 
 source ./helpers
 
+# reads in each line of database.txt to an index in the array, 'lines'
 IFS=$'\n' read -d '' -r -a lines < database.txt
-#printf "(1) %s\n" "${lines[0]}"
-#printf "(2) %s\n" "${lines[1]}"
-
 
 prompt="Which record line whould you like to replace?
 	>: "
-
 updateConfirm="You want to update this record?"
 promptnew="What is the new record?
 	   >: "
@@ -20,32 +17,22 @@ promptnew="What is the new record?
 #input is the user's line selection
 read -p "${prompt}" input        
 
-#printf "You want to update line ${input}?\n"
-read -p "${updateConfirm}" confirmation
-printf "${lines[$input]}\n"
-	
-if [ $confirmation == "Y" || $confirmation =="y"]; then
-	input_record     #calls input_record function from ./helpers
-else
-	#ask user again for line selection
-fi
+read -p "${updateConfirm}: ${lines[$input]}: " confirmation
+#printf "${lines[$input]}\n"
 
-#IFS=':'i
-set ${input}
-#unset IFS
+case $confirmation in
+	y|Y) echo "FILE UPDATED" ;;
+	n|N) echo "FILE NOT UPDATED" ;;
+	*) echo "don't know" ;;
+esac
+ #input_record     #calls input_record function from ./helpers
+
 
 #if [ ${#} -ne 4 ]; then
 #       	echo "Illegal number of parameters"
 # 	exit 0
 #fi
 
-
-
-
-
-
-#sed  -i -e "s/${input}/${newinput}/g" database.txt
-#echo "Record replaced"
 
 
 
