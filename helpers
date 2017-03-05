@@ -1,6 +1,8 @@
 #!/bin/bash
 #create database
 
+declare -a record
+
 createdatabase() {
 	file="./database.txt"
 
@@ -9,7 +11,6 @@ createdatabase() {
 		printf "Name:Address:Phone:Email\n" >> database.txt
 	fi
 }
-
 
 input_record() {
 
@@ -37,7 +38,5 @@ input_record() {
 		echo "Illegal character : in input"
 		exit 0
 	fi
-
-	return ${record}
 }
 
