@@ -33,7 +33,7 @@ while true; do
     fi
 done
 
-echo -n "Record: "
+echo -n "Target Record: "
 cat pat.txt
 
 
