@@ -3,6 +3,7 @@
 
 source ./helpers
 
+createdatabase
 display_records
 
 # reads in each line of database.txt to an index in the array, 'lines'
@@ -17,7 +18,7 @@ promptnew="What is the new record?
 #input is the user's line selection
 read -p "${prompt}" input        
 
-read -p "${updateConfirm}: ${lines[$input]}: " confirmation
+read -p "${updateConfirm}: ${lines[((${input} - 1))]}: " confirmation
 
 case $confirmation in
 	y|Y) input_record
@@ -28,7 +29,7 @@ case $confirmation in
 	     fi	
 	     newRecord="${record[0]}:${record[1]}:${record[2]}:${record[3]}"  # "${lines[$input]}"
 	     printf "${newRecord}\n"
-	     lines[${input}]=${newRecord}
+	     lines[((${input} - 1))]=${newRecord}
 	     printf '%s\n' "${lines[@]}" >| database.txt;;
 	     
 	n|N) echo "FILE NOT UPDATED" ;;

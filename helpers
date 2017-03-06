@@ -4,11 +4,12 @@
 declare -a record
 
 createdatabase() {
-	file="./database.txt"
+	file="database.txt"
 
 	if [ ! -f "${file}" ]; then
-		printf "File database.txt doesn't exit\n"
-		printf "Name:Address:Phone:Email\n" >> database.txt
+		printf "File database.txt doesn't exit\nCreating database.txt\n"
+		#printf "Name:Address:Phone:Email\n" >> database.txt
+		touch database.txt
 	fi
 }
 
@@ -45,7 +46,7 @@ display_records() {
 	printf "Records in Database: \n\n"
 	printf "Name  |  Address  |  Phone  |  Email\n"
 	echo "------------------------------------"
-	count=0
+	count=1
 
 	while read line; do
 			printf "($count) "

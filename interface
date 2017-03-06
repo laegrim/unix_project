@@ -2,6 +2,8 @@
 source ./helpers
 clear
 
+createdatabase
+
 printf "Welcome to your address book!\n\n"
 
 prompt="Please select from the following options:
@@ -22,7 +24,7 @@ while true; do
 		c|C) ./updaterecord;;
 		d|D) ./deleterecord;;
 		e|E) display_records;;
-		x|X) echo "Quitting..."; sleep 1s; exit 0;;
+		x|X) echo "Quitting..."; exit 0;;
 		*) echo "Incorrect input."; sleep 1s; clear;
 	esac
 done 

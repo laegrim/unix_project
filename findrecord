@@ -1,8 +1,22 @@
 #!/bin/bash
-#find record based on user input
+
 source ./helpers
 clear
+createdatabase
 display_records
+	
+function exact_find() {
+	read -e -p "Enter the exact contact to find (separate parameters with ':'): " exact
+	matchexact=$(grep -x "^${exact}" database.txt)
+	if [ -n "${matchexact}" ]; then
+		clear
+		echo "Exact record match with pattern "${exact}" found: "
+		grep -x "^${exact}" database.txt
+	
+	else
+		echo "No exact record with pattern "${exact}" found."
+	fi
+}
 
 function name_find() {
 	read -e -p "Enter the name of contact to find: " name
@@ -58,12 +72,13 @@ function email_find() {
 
 
 prompt="Search for a record by:
-	(a) name
-	(b) address
-	(c) phone
-	(d) email  
-	(x) exit
-	>:"
+		(a) name
+		(b) address
+		(c) phone
+		(d) email
+		(e) exact pattern  
+		(x) exit
+		>:"
 
 while true; do
 
@@ -74,6 +89,7 @@ while true; do
         b|B) address_find;;
         c|C) phone_find;;
         d|D) email_find;;
+	e|E) exact_find;;
         x|X) exit 0;;
 	*) echo "Incorrect input."; sleep 1s; clear;
     esac
