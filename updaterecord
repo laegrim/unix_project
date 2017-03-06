@@ -3,37 +3,12 @@
 
 source ./helpers
 
-createdatabase
 display_records
-
-# reads in each line of database.txt to an index in the array, 'lines'
-IFS=$'\n' read -d '' -r -a lines < database.txt
-
-prompt="Which record line whould you like to replace?
- 		 >: "
-updateConfirm="You want to update this record? (y/n)"
-promptnew="What is the new record?
-	   	 >: "
-
-#input is the user's line selection
-read -p "${prompt}" input        
-
-read -p "${updateConfirm}: ${lines[((${input} - 1))]}: " confirmation
-
-case $confirmation in
-	y|Y) input_record
-	     if grep -n -x -F "${record[0]}:${record[1]}:${record[2]}:${record[3]}" database.txt; then
-	     	echo "Updated record is a duplicate of indicated line"
-		echo "FILE NOT UPDATED"
-		exit 0
-	     fi	
-	     newRecord="${record[0]}:${record[1]}:${record[2]}:${record[3]}"  # "${lines[$input]}"
-	     printf "${newRecord}\n"
-	     lines[((${input} - 1))]=${newRecord}
-	     printf '%s\n' "${lines[@]}" >| database.txt;;
-	     
-	n|N) echo "FILE NOT UPDATED" ;;
-	*) echo "invalid input" exit 0 ;;
-esac
+      
+echo "Record to udpate: "
+./specrecord
+pattern=$(cat pat.txt)
+./deleterecord $pattern
+./addrecord
 
 exit 0
