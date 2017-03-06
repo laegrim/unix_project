@@ -46,7 +46,7 @@ display_records() {
 	printf "Records in Database: \n\n"
 	printf "Name  |  Address  |  Phone  |  Email\n"
 	echo "------------------------------------"
-	count=0
+	count=1
 
 	while read line; do
 			printf "($count) "
