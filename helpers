@@ -7,9 +7,15 @@ createdatabase() {
 	file="database.txt"
 
 	if [ ! -f "${file}" ]; then
+<<<<<<< HEAD
 		printf "File database.txt doesn't exit\n"
 		touch database.txt
         touch pat.txt
+=======
+		printf "File database.txt doesn't exit\nCreating database.txt\n"
+		#printf "Name:Address:Phone:Email\n" >> database.txt
+		touch database.txt
+>>>>>>> dc8c665b900b50d7086af184e43556bf7544b94e
 	fi
 }
 
@@ -46,7 +52,7 @@ display_records() {
 	printf "Records in Database: \n\n"
 	printf "Name  |  Address  |  Phone  |  Email\n"
 	echo "------------------------------------"
-	count=0
+	count=1
 
 	while read line; do
 			printf "($count) "
