@@ -1,51 +1,23 @@
 #!/bin/bash
-source ./helpers
-createdatabase
+
+OFIS=$IFS
+IFS=':'
 
 if [ $# -ne 0 ]; then
-    pattern=$1
-    grep -w "$pattern" database.txt > found.txt
+    pat="$*"
+    grep -v -w "$pat" database.txt > datatemp.txt
+    mv datatemp.txt database.txt
+    IFS=$OIFS
     exit
 fi
 
-echo "Find: "
+./specrecord
 
-OIFS=$IFS
-IFS=':'
+pattern=$(cat pat.txt)
 
-next=1
-while true; do 
-    case "$next" in
-        1) echo "Enter Name: " 
-            ;;
-        2) echo "Enter Address: " 
-            ;;
-        3) echo "Enter Phone Number: " 
-            ;;
-        4) echo "Enter Email: " 
-            ;;
-        *) echo "Record not found."
-           break;;
-    esac
-
-    if [ $next -eq 1 ]; then
-        read appen
-        pattern=$appen
-    else
-        read appen
-        pattern=$pattern:$appen
-    fi
-
-    val=$(grep -c -w "$pattern" database.txt)
-    if [ ${val} -gt 1 ]; then
-        next=$((next+1))
-    else
-        grep  -v -w "$pattern" database.txt > datatemp.txt
-        mv datatemp.txt database.txt
-        echo "$pattern removed."
-        break
-    fi
-done
-IFS=$OIFS
+grep  -v -w "$pattern" database.txt > datatemp.txt
+mv datatemp.txt database.txt
+echo "$pattern removed."
+IFS=$OIFS    
 
 
