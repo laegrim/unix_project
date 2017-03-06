@@ -2,6 +2,7 @@
 #find record based on user input
 source ./helpers
 clear
+createdatabase
 display_records
 
 function name_find() {

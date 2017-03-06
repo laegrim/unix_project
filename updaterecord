@@ -3,6 +3,7 @@
 
 source ./helpers
 
+createdatabase
 display_records
 
 # reads in each line of database.txt to an index in the array, 'lines'
