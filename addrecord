@@ -5,7 +5,8 @@ help_prompt="usage: addrecord [-h --help help]
 
 Records are always ':' delimited, and are formatted
 Name:Address:Email:Phone. The ':' character cannot
-be used in a field.
+be used in a field.  Exact duplicate records are 
+not permitted.
 
 Special characters are always escaped.
 "
@@ -17,6 +18,7 @@ new_record_prompt="Would you like to add a new record (y/n)?
  	>:"
 improper_new_record_prompt="Please enter 'y' to add a new record, 'n' to exit
 	>:"
+dup_record="This record already exists in the database"
 
 prompt_loop () {
 	read -p "${1}" loop_var
@@ -45,6 +47,12 @@ fi
 if ! input_record; then
 	echo "${help_prompt}"
 	prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"
+fi
+
+if grep -n -x -F "${record[0]}:${record[1]}:${record[2]}:${record[3]}" database.txt; then
+	echo "${dup_record}"
+	prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"
+	exit 0
 fi
 
 #Check to see if name is a duplicate of another field
