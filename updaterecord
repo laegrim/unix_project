@@ -20,7 +20,12 @@ read -p "${prompt}" input
 read -p "${updateConfirm}: ${lines[$input]}: " confirmation
 
 case $confirmation in
-	y|Y) input_record 
+	y|Y) input_record
+	     if grep -n -x -F "${record[0]}:${record[1]}:${record[2]}:${record[3]}" database.txt; then
+	     	echo "Updated record is a duplicate of indicated line"
+		echo "FILE NOT UPDATED"
+		exit 0
+	     fi	
 	     newRecord="${record[0]}:${record[1]}:${record[2]}:${record[3]}"  # "${lines[$input]}"
 	     printf "${newRecord}\n"
 	     lines[${input}]=${newRecord}
