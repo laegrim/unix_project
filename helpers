@@ -4,7 +4,7 @@
 declare -a record
 
 createdatabase() {
-	file="./database.txt"
+	file="database.txt"
 
 	if [ ! -f "${file}" ]; then
 		printf "File database.txt doesn't exit\n"
