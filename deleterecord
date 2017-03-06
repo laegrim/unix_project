@@ -2,6 +2,8 @@
 source ./helpers
 createdatabase
 
+#delete this comment
+
 if [ $# -ne 0 ]; then
     pattern=$1
     grep -w "$pattern" database.txt > found.txt
