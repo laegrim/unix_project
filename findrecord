@@ -1,26 +1,14 @@
 #!/bin/bash
-
+#find record based on user input
 source ./helpers
 clear
-createdatabase
 display_records
-	
-function exact_find() {
-	read -e -p "Enter the exact contact to find (separate parameters with ':'): " exact
-	matchexact=$(grep -x "^${exact}" database.txt)
-	if [ -n "${matchexact}" ]; then
-		clear
-		echo "Exact record match with pattern "${exact}" found: "
-		grep -x "^${exact}" database.txt
-	
-	else
-		echo "No exact record with pattern "${exact}" found."
-	fi
-}
+
+
 
 function name_find() {
 	read -e -p "Enter the name of contact to find: " name
-	matchname=$(grep -w "^${name}" database.txt)
+  	matchname=$(grep -w "^${name}" database.txt)
 	if [ -n "${matchname}" ]; then
 		clear
 		echo "Record match with name "${name}" found: "
@@ -29,6 +17,7 @@ function name_find() {
 	else
 		echo "No record with name "${name}" found."
 	fi
+
 }
 
 function address_find() {
@@ -70,15 +59,28 @@ function email_find() {
 	fi
 }
 
+##########Michael Change################
+echo -n "Search by:
+         (a) Record
+         (b) Field
+         >:" 
+read ans
 
+case $ans in
+    a|A) ./specrecord 
+         exit 0;;
+      *) :;;
+esac
+
+
+#######################################
 prompt="Search for a record by:
-		(a) name
-		(b) address
-		(c) phone
-		(d) email
-		(e) exact pattern  
-		(x) exit
-		>:"
+	    (a) name
+	    (b) address
+	    (c) phone
+	    (d) email  
+	    (x) exit
+	    >:"
 
 while true; do
 
@@ -89,8 +91,8 @@ while true; do
         b|B) address_find;;
         c|C) phone_find;;
         d|D) email_find;;
-	e|E) exact_find;;
         x|X) exit 0;;
 	*) echo "Incorrect input."; sleep 1s; clear;
     esac
 done
+
