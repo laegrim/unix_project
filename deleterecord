@@ -3,8 +3,6 @@
 OFIS=$IFS
 IFS=':'
 
-#delete this comment
-
 if [ $# -ne 0 ]; then
     pat="$*"
     grep -v -w "$pat" database.txt > datatemp.txt
