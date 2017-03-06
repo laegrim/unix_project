@@ -8,7 +8,8 @@ createdatabase() {
 
 	if [ ! -f "${file}" ]; then
 		printf "File database.txt doesn't exit\n"
-		printf "Name:Address:Phone:Email\n" >> database.txt
+		touch database.txt
+        touch pat.txt
 	fi
 }
 
