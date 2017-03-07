@@ -1,4 +1,5 @@
 #!/bin/bash
+#addrecord
 source ./helpers
 
 help_prompt="usage: addrecord [-h --help help]
@@ -89,9 +90,9 @@ if [ ${match} = true ]; then
 	read -p "${dup_field_prompt}" valid
         case ${valid} in 
 		y|Y) 	#append input to the file
-			printf "%s:%s:%s:%s\n" "${record[0]}" "${record[1]}" "${record[2]}" "${record[3]}" >> database.txt;; 
+			printf "%s:%s:%s:%s\n" "${record[0]}" "${record[1]}" "${record[2]}" "${record[3]}" >> database.txt; clear;; #############
 		n|N)	#check if they want to add a new record, exit if not
-			prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}";;
+			prompt_loop "${new_record_prompt}" "./addrecord" "${improper_new_record_prompt}"; clear;;
 		*)	prompt_loop "${improper_dup_field_prompt}" 'printf "%s:%s:%s:%s\n" "${record[0]}" "${record[1]}" "${record[2]}" "${record[3]}" >> database.txt', \
 					"${improper_dup_field_prompt}";;
 	esac

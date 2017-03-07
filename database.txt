@@ -1,7 +1,10 @@
-Name:Address:Phone:Email
-Jean Luke Picard:Enterprise, Main Bridge:jlpicard@enterprise.com:1-800-Deep-Space
 Funny Stuff!:grep -n stuff /bin/bash:echo "this is a string":exit 0
 Daniel Quintanilla:116 San Marcos:512-214-9087:bounce@gain.com
-Daniel Quintanilla:567 San Marcos:7865890453:yahoo@gmail.com
 Sam:My Address:My Phone:My Email
-1:2:3:4
+Jason:123 San Marcos:321:jason@gmail.com
+Josh:777 candy lane:789:josh@gmail.com
+James:1610 Aquarena Dr.:512-614-8876:james@gmail.com
+David:1432 Peach St.:512-888-8465:david@gmail.com
+Josh:1444 Walnut Dr.:512-779-0446:josh@gmail.com
+Bobby:1878 Pecan St.:512-877-6285:bobby@gmail.com
+Jackie:9876 Texas St.:512-422-2628:jackie@gmail.com

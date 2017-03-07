@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#specrecord
 next=1
 
 while true; do 

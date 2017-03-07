@@ -1,5 +1,5 @@
 #!/bin/bash
-#update record
+#updaterecord
 
 source ./helpers
 
@@ -10,5 +10,6 @@ echo "Record to udpate: "
 pattern=$(cat pat.txt)
 ./deleterecord $pattern
 ./addrecord
+echo "Record has been updated!"
 
 exit 0
