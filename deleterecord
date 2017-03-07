@@ -13,11 +13,14 @@ fi
 
 ./specrecord
 
-pattern=$(cat pat.txt)
 
+pattern=$(cat pat.txt)
+ 
 grep  -v -w "$pattern" database.txt > datatemp.txt
 mv datatemp.txt database.txt
-echo "Record removed."
+
+
+
 IFS=$OIFS    
 
 

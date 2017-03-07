@@ -12,7 +12,8 @@ while true; do
             ;;
         4) echo "Enter Email: " 
             ;;
-        *) echo "Record Not Found"
+        *) echo "Record Not Found" > pat.txt
+           cat pat.txt
            exit 0
            break;;
     esac
