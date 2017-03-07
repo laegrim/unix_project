@@ -8,7 +8,12 @@ display_records
 echo "Record to udpate: "
 ./specrecord
 pattern=$(cat pat.txt)
+match="Record Not Found"
 ./deleterecord $pattern
+
+if [ $(grep -c -w "$match" pat.txt) -ne 0 ]; then 
+    echo "Adding new record:"
+fi
 ./addrecord
 echo "Record has been updated!"
 
