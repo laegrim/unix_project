@@ -12,7 +12,7 @@ match="Record Not Found"
 ./deleterecord $pattern
 
 if [ $(grep -c -w "$match" pat.txt) -ne 0 ]; then 
-    echo "Adding new record:"
+    exit 1;
 fi
 ./addrecord
 echo "Record has been updated!"
