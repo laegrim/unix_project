@@ -6,11 +6,17 @@ while true; do
     case "$next" in
         1) echo "Enter Name: " 
             ;;
-        2) echo "Enter Address: " 
+        2)  echo "Matches: "
+            grep -w "$pattern" database.txt
+            echo "Enter Address: " 
             ;;
-        3) echo "Enter Phone Number: " 
+        3)  echo "Matches: "
+            grep -w "$pattern" database.txt
+            echo "Enter Phone Number: " 
             ;;
-        4) echo "Enter Email: " 
+        4)  echo "Matches: "
+            grep -w "$pattern" database.txt
+            echo "Enter Email: " 
             ;;
         *) echo "Record Not Found" > pat.txt
            cat pat.txt
